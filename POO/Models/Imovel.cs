@@ -8,7 +8,7 @@ namespace POO.Models
 {
     public class Imovel
     {
-        int ID { get; set; }
-        bool TipoImovel { get; set; }
+        public int ID { get; set; }
+        public bool TipoImovel { get; set; } //Residencial = True, Comercial = False
     }
 }

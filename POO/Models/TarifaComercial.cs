@@ -8,15 +8,15 @@ namespace POO.Models
 {
     public static class TarifaComercial
     {
-        static double zeroAseisAgua = 1.0;
-        static double seisAdezAgua = 1.0;
-        static double dezAquarentaAgua = 1.0;
-        static double quarentaAcemAgua = 1.0;
-        static double maiorCemAgua = 1.0;
-        static double zeroAseisEsgoto = 1.0;
-        static double seisAdezEsgoto = 1.0;
-        static double dezAquarentaEsgoto = 1.0;
-        static double quarentaAcemEsgoto = 1.0;
-        static double maiorCemEsgoto = 1.0;
+        public static double zeroAseisAgua = 1.0;
+        public static double seisAdezAgua = 1.0;
+        public static double dezAquarentaAgua = 1.0;
+        public static double quarentaAcemAgua = 1.0;
+        public static double maiorCemAgua = 1.0;
+        public static double zeroAseisEsgoto = 1.0;
+        public static double seisAdezEsgoto = 1.0;
+        public static double dezAquarentaEsgoto = 1.0;
+        public static double quarentaAcemEsgoto = 1.0;
+        public static double maiorCemEsgoto = 1.0;
     }
 }
