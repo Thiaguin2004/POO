@@ -54,8 +54,6 @@
     </Compile>
     <Compile Include="Models\Conta.cs" />
     <Compile Include="Models\Imovel.cs" />
-    <Compile Include="Models\TarifaComercial.cs" />
-    <Compile Include="Models\TarifaResidencial.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
