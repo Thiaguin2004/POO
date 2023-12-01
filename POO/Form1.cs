@@ -15,6 +15,7 @@ namespace POO
 {
     public partial class Form1 : Form
     {
+        // Carregamento de todo o formulário incluindo combosbox
         public Form1()
         {
             InitializeComponent();
@@ -36,6 +37,8 @@ namespace POO
 
             comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+
+        // Leitura do arquivo de imóveis e inserção em lista nos dropdowns
         private void CarregarInformacoesImoveis()
         {
             string caminhoArquivoImoveis = "imoveis.txt";
@@ -69,6 +72,8 @@ namespace POO
                 comboBox3.Items.Add(dadoImovel);
             }
         }
+        
+        // Solução para inserir texto com um valor a parte, para ficar amigável para o usuário
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             KeyValuePair<bool, string> selectedOption = (KeyValuePair<bool, string>)comboBox1.SelectedItem;
@@ -76,26 +81,14 @@ namespace POO
             bool valor = selectedOption.Key;
             string texto = selectedOption.Value;
         }
+
+        // Solução para inserir texto com um valor a parte, para ficar amigável para o usuário
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             KeyValuePair<bool, string> selectedOption = (KeyValuePair<bool, string>)comboBox2.SelectedItem;
 
             bool valor = selectedOption.Key;
             string texto = selectedOption.Value;
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -125,6 +118,8 @@ namespace POO
             }
         }
 
+        // Diferente dos outros botões de ação, este recarrega as listas de acordo com
+        // Novas inserções nos arquivos de texto
         private void button3_Click(object sender, EventArgs e)
         {
             comboBox3.Items.Clear();
@@ -149,6 +144,7 @@ namespace POO
             MostrarContasNoDropdown(contas);
         }
 
+        // Método para mostrar lista de Contas no dropdownlist
         void MostrarContasNoDropdown(List<Conta> contas)
         {
             comboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -267,6 +263,39 @@ namespace POO
                     MessageBox.Show("Erro: " + ex.Message);
                 }
             }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

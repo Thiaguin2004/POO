@@ -18,6 +18,7 @@ namespace POO.Models
         public int IDImovel { get; set; }
         public Imovel Imovel { get; set; }
 
+        //Construtor para criação de conta e inserção no arquivo texto
         public static void CriarConta(int idConta, int idImovel, bool tipoConta, double leituraMesAnterior, double leituraMesAtual)
         {
             if (!Imovel.ExisteImovel(idImovel))
@@ -43,6 +44,8 @@ namespace POO.Models
         {
             return conta.LeituraMesAtual - conta.LeituraMesAnterior;
         }
+
+        #region Garantir consumo total em reais de conta de água ou energia
         public static double GetConsumoReais(Conta conta)
         {
             if (conta.TipoConta.Equals(true)) //Energia
@@ -75,6 +78,9 @@ namespace POO.Models
                 return CalcularVariacaoValorConta(conta);
             }
         }
+        #endregion
+
+        #region Garantir consumo médio em reais para conta de água ou energia
         public static double GetConsumoMedioReais(Conta conta)
         {
             if (conta.TipoConta.Equals(true)) //Energia
@@ -107,10 +113,13 @@ namespace POO.Models
                 return CalcularValorMedioConta(conta);
             }
         }
+        #endregion
         public static double GetConsumoMesAnterior(Conta conta)
         {
             return conta.LeituraMesAnterior;
         }
+
+        #region Garantir valor total de conta de água ou energia
         public static double GetValorTotal(Conta conta)
         {
             if (conta.TipoConta.Equals(true)) //Energia
@@ -143,6 +152,9 @@ namespace POO.Models
                 return CalcularValorConta(conta);
             }
         }
+        #endregion
+
+        #region Garantir valor total sem impostos de conta de água ou energia
         public static double GetValorTotalSemImpostos(Conta conta)
         {
             if (conta.TipoConta.Equals(true)) //Energia
@@ -172,6 +184,9 @@ namespace POO.Models
                 return CalcularValorContaSemImpostos(conta);
             }
         }
+        #endregion
+
+        #region GerarIDAutoIncrement de acordo com a ordem do arquivo de texto
         public static int GerarIDAutoIncrement()
         {
             int proximoID = 1;
@@ -198,7 +213,9 @@ namespace POO.Models
 
             return proximoID;
         }
+        #endregion
 
+        #region Utilitário para ler o arquivo texto de Contas
         static int ObterIDDaLinha(string linha)
         {
             int id;
@@ -209,7 +226,9 @@ namespace POO.Models
 
             return 0;
         }
+        #endregion
 
+        #region Método para ler informações de conta do arquivo texto, para inserir no programa
         public static List<Conta> LerInformacoesDoArquivo(string caminhoArquivo)
         {
             List<Conta> contas = new List<Conta>();
@@ -263,6 +282,9 @@ namespace POO.Models
 
             return contas;
         }
+        #endregion
+
+        #region Método para buscar conta no arquivo de texto por ID
         public static Conta BuscarContaPorID(int idProcurado)
         {
             var caminhoArquivo = "informacoes.txt";
@@ -316,6 +338,9 @@ namespace POO.Models
 
             return null;
         }
+        #endregion
+
+        #region Cálculo de variação de valor da conta de água
         public static double CalcularVariacaoValorConta(Conta conta)
         {
             double consumoAgua = conta.LeituraMesAtual - conta.LeituraMesAnterior;
@@ -340,6 +365,9 @@ namespace POO.Models
 
             return totalComCofins;
         }
+        #endregion
+
+        #region Cálculo de valor de conta de água
         public static double CalcularValorConta(Conta conta)
         {
             double consumoAgua = conta.LeituraMesAtual + conta.LeituraMesAnterior;
@@ -364,6 +392,9 @@ namespace POO.Models
 
             return totalComCofins;
         }
+        #endregion
+
+        #region Cálculo de valor médio de conta de água
         public static double CalcularValorMedioConta(Conta conta)
         {
             double consumoAgua = (conta.LeituraMesAtual + conta.LeituraMesAnterior)/2;
@@ -388,6 +419,9 @@ namespace POO.Models
 
             return totalComCofins;
         }
+        #endregion
+
+        #region Cálculo de valor de conta de água sem impostos
         public static double CalcularValorContaSemImpostos(Conta conta)
         {
             double consumoAgua = conta.LeituraMesAtual - conta.LeituraMesAnterior;
@@ -408,6 +442,9 @@ namespace POO.Models
 
             return tarifaAgua + tarifaEsgoto;
         }
+        #endregion
+
+        #region Cálculos de água
         private static double CalcularTarifaResidencial(double consumoAgua)
         {
             if (consumoAgua <= 6)
@@ -458,5 +495,6 @@ namespace POO.Models
                 return 8.329 * (consumoAgua - 100) + 8.288 * 60 + 8.221 * 30 + 4.299 * 4 + 25.79;
             }
         }
+        #endregion
     }
 }

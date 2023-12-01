@@ -13,6 +13,7 @@ namespace POO.Models
         public int ID { get; set; }
         public bool TipoImovel { get; set; } //Residencial = True, Comercial = False
 
+        #region Criação de Imovel
         public static void CriarImovel(int idImovel, bool tipoImovel)
         {
             string linhaImovel = $"{idImovel};{tipoImovel}";
@@ -28,7 +29,9 @@ namespace POO.Models
 
             MessageBox.Show("Imóvel criado com sucesso!");
         }
+        #endregion
 
+        #region Verificação de existência de Imovel ao criar Conta
         public static bool ExisteImovel(int idImovel)
         {
             string caminhoArquivoImoveis = "imoveis.txt";
@@ -43,7 +46,9 @@ namespace POO.Models
 
             return linhas.Any(linha => linha.StartsWith($"{idImovel};"));
         }
+        #endregion
 
+        #region GerarIDAutoIncrement de acordo com a ordem do arquivo de texto
         public static int GerarIDAutoIncrement()
         {
             int proximoID = 1;
@@ -70,7 +75,9 @@ namespace POO.Models
 
             return proximoID;
         }
+        #endregion
 
+        #region ObterImovelPorID
         public static Imovel ObterImovelPorID(int idProcurado)
         {
             var caminhoArquivo = "imoveis.txt";
@@ -124,5 +131,6 @@ namespace POO.Models
 
             return 0;
         }
+        #endregion
     }
 }
